@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.promotion.VIPStrategyMapper">
+    <insert id="insertVIPStrategy" parameterType="com.example.cinema.po.CardItem"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into vip_strg(target, `add`)
+        VALUES(#{target},#{add})
+    </insert>
+    <select id="selectAllStrategy" resultMap="CardItem">
+        select * from vip_strg;
+    </select>
+    <delete id="deleteStrategyByID">
+        delete from vip_strg where id=#{id}
+    </delete>
+    <update id="updateStrategy">
+        update vip_strg set target=#{target},`add`=#{add} where id=#{id}
+    </update>
+    <resultMap id="CardItem" type="com.example.cinema.po.CardItem">
+        <result column="id" property="id"></result>
+        <result column="target" property="target"></result>
+        <result column="add" property="add"></result>
+    </resultMap>
+</mapper>

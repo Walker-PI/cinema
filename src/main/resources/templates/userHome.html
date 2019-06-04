@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南影时光</title>
+    <script src="/js/jquery.js"></script>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slideBox.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userHome.css"/>
+
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <!-- 引入js脚本文件 -->
+    <script src="/js/request.js"></script>
+    <script src="/js/userHome.js"></script>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+
+
+    <script>
+        jQuery(function($){
+            $('#demo3').slideBox({
+
+                duration : 0.3,//滚动持续时间，单位：秒
+                easing : 'linear',//swing,linear//滚动特效
+                delay : 5,//滚动延迟时间，单位：秒
+                hideClickBar : false,//不自动隐藏点选按键
+                clickBarRadius : 10
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<div class="nav-top-container">
+    <div class="nav-logo title">NJU-Se电影购票系统</div>
+    <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="#">首页</a></li>
+        <li role="presentation"><a href="/user/movie">电影</a></li>
+    </ul>
+    <div class="btn-group">
+        <button class="nav-user-container btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="avatar-sm" src="/images/defaultAvatar.jpg" />
+            <span class="gray-text" style="vertical-align: middle">用户A&nbsp;<span class="caret"></span></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="/user/buy">电影票</a></li>
+            <li><a href="/user/member">卡包</a></li>
+            <li id="logout"><a href="#">登出</a></li>
+        </ul>
+    </div>
+</div>
+<div class="content-container">
+    <div id="demo3" class="slideBox">
+        <ul class="items">
+            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
+            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
+            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
+            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
+            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

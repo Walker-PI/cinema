@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册账户</title>
+
+    <!-- 引入css样式文件 -->
+<!--    <link rel="stylesheet" type="text/css" href="/css/bootstrap-grid.min.css" />&lt;!&ndash;CSS RESET&ndash;&gt;-->
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- 引入js脚本文件 -->
+    <script src="/js/request.js"></script>
+
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+
+
+</head>
+<body>
+<script src="/js/signUp.js"></script>
+<div class="htmleaf-container">
+    <div class="demo form-bg">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+                    <form class="form-horizontal">
+                        <div class="heading">signup form</div>
+<!--                        <div class="form-group signup_msg">-->
+<!--                            <i class="fa fa-user"></i><input @click.prevent="clickHanlder" required name="signup[useremail]" type="email" class="form-control" placeholder="Username" id="exampleInputEmail">-->
+<!--                        </div>-->
+                        <div class="form-group signup_msg">
+                            <i class="fa fa-user"></i><input @click.prevent="clickHanlder" required name="signup[username]" type="username" class="form-control" placeholder="Username" id="exampleInputName">
+                        </div>
+                        <div class="form-group signup_msg">
+                            <i class="fa fa-lock"></i><input @click.prevent="clickHanlder" required name="signup[password]" type="password" class="form-control" placeholder="Password" id="exampleInputPassword"/>
+                        </div>
+                        <div class="form-group login_msg">
+                            <i class="fa fa-lock"></i><input @click.prevent="clickHanlder" required name="login[password]" type="password" class="form-control" placeholder="Confirm your password" id="exampleSecondInputPassword"/>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default signup_ack_btn"><i class="fa fa-arrow-right"></i></button>
+                            <span>Already have an account? <a href="/index" class="create_account">Login</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

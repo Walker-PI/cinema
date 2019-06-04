@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.management.RefundStrategyMapper">
+
+    <insert id="insertStrategy" parameterType="com.example.cinema.po.RefundStrg">
+        insert into refund_strg(end_minute, percent) values (#{endMinute}, #{percent})
+    </insert>
+
+    <select id="selectAllStrategy" resultMap="RefundStrg">
+        select * from refund_strg order by end_minute
+    </select>
+
+    <delete id = "deleteAllStratefy">
+        delete from refund_strg
+    </delete>
+
+    <resultMap id="RefundStrg" type="com.example.cinema.po.RefundStrg">
+        <result column="end_minute" property="endMinute"></result>
+        <result column="percent" property="percent"></result>
+    </resultMap>
+</mapper>

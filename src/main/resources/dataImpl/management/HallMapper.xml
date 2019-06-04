@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.management.HallMapper">
+    <select id="selectAllHall" resultMap="Hall">
+        select * from hall
+    </select>
+
+    <select id="selectHallById" resultMap="Hall">
+        select * from hall where id = #{hallId}
+    </select>
+
+    <insert id="insertHall" keyProperty="id" useGeneratedKeys="true" parameterType="com.example.cinema.po.Hall">
+        insert into hall(name,column_c,row_r)
+        values(#{name},#{column},#{row})
+    </insert>
+
+    <delete id="deleteHall">
+        delete from hall where id=#{id}
+    </delete>
+
+    <update id="updateHall">
+        update hall set name=#{name},column_c=#{column},row_r=#{row} where id=#{id}
+    </update>
+
+    <resultMap id="Hall" type="com.example.cinema.po.Hall">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
+        <result column="column_c" property="column"></result>
+        <result column="row_r" property="row"></result>
+    </resultMap>
+
+</mapper>

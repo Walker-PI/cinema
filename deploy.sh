@@ -21,8 +21,8 @@ killTomcat()
     fi
 }
 cd $PROJ_PATH/cinema
-mv cinema-0.0.1-SNAPSHOT.war cinema.war
 mvn clean install
+mv cinema-0.0.1-SNAPSHOT.war cinema.war
 
 # 停tomcat
 killTomcat

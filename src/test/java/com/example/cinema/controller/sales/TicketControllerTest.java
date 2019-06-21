@@ -46,7 +46,7 @@ public class TicketControllerTest {
 
             String response = mvcResult.getResponse().getContentAsString();
             System.out.println(response);
-            String result = "{\"success\":true,\"message\":null,\"content\":34.9}";
+            String result = "{\"success\":true,\"message\":null,\"content\":104.69}";
             Assert.assertEquals(result,response);
 
         } catch (Exception e){

@@ -41,13 +41,13 @@ public class HallControllerTest {
         try{
 
             MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                    .get("/hall/{id}", 4)
+                    .get("/hall/{id}", 2)
                     .accept(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
                     .andReturn();
 
             String response = mvcResult.getResponse().getContentAsString();
-            String result = "{\"success\":true,\"message\":null,\"content\":{\"id\":4,\"name\":\"4号厅\",\"column\":9,\"row\":7}}";
+            String result = "{\"success\":true,\"message\":null,\"content\":{\"id\":2,\"name\":\"2号厅\",\"column\":12,\"row\":8}}";
             Assert.assertEquals(result,response);
         } catch (Exception e){
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class HallControllerTest {
     public void updateHall() {
         try{
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("name","VIP影厅");
+            jsonObject.put("name","4号厅");
             jsonObject.put("column","10");
             jsonObject.put("row", "12");
             String hallForm = jsonObject.toString();

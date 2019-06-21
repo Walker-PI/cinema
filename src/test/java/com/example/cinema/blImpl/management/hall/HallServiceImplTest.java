@@ -30,7 +30,7 @@ public class HallServiceImplTest {
         ResponseVO responseVO =  hallService.searchHall(1);
         Hall hall = (Hall)responseVO.getContent();
         String hallString = "hallName:"+hall.getName()+" column:"+hall.getColumn()+" row:"+hall.getRow();
-        String result = "hallName:test column:6 row:9";
+        String result = "hallName:1号厅 column:6 row:9";
         Assert.assertEquals(result, hallString);
     }
 

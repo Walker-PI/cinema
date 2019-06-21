@@ -36,8 +36,8 @@ public class AccountControllerTest {
         try {
 
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("username","FanYe");
-            jsonObject.put("password", "123456");
+            jsonObject.put("username","Kevin");
+            jsonObject.put("password", "rwkdccc");
             String userForm = jsonObject.toString();
 
             MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/login")

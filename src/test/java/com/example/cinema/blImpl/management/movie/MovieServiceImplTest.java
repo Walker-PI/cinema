@@ -23,26 +23,6 @@ import static org.junit.Assert.*;
 public class MovieServiceImplTest {
     @Autowired
     MovieService movieService;
-   
-    @After
-    public void tearDown() throws Exception {
-    }
-    
-
-    @Test
-    public void updateMovie() {
-        MovieForm movieForm = new MovieForm();
-        movieForm.setId(15);
-        movieForm.setCountry("美国");
-        movieForm.setName("比快乐更快乐的故事");
-        movieForm.setDescription("快乐就完事");
-        movieForm.setDirector("张艺谋");
-        movieForm.setLength(90);
-        Date date = new Date();
-        movieForm.setStartDate(date);
-        movieForm.setEndDate(new Date());
-        movieService.updateMovie(movieForm);
-    }
 
     @Test
     public void searchAllOrderByLikeNum(){

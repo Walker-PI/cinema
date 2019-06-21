@@ -21,23 +21,7 @@ import static org.junit.Assert.*;
 public class RoleServiceImplTest {
     @Autowired
     RoleService roleService;
-    @Before
-    public void setUp() throws Exception {
-    }
 
-    @After
-    public void tearDown() throws Exception {
-    }
-
-    @Test
-    public void addRole() {
-        RoleForm roleForm = new RoleForm();
-        roleForm.setUsername("トゥーナ");
-        roleForm.setPassword("TNtxdy");
-        roleForm.setEmail("tuonatxdy@163.com");
-        roleForm.setUserType(0);
-        roleService.addRole(roleForm);
-    }
 
     @Test
     public void deleteRoleByUsername() {

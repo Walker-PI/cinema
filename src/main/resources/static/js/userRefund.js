@@ -51,7 +51,7 @@ $(document).ready(function () {
                     strg+='开场前<span style=\'color: #d43f3a\'>'+item.endMinute.toString().substring(1);
                 else
                     strg+='开场<span style=\'color: #d43f3a\'>'+item.endMinute;
-                strg+='</span>分钟，</td><td style="text-align: left;margin: 10px">退款百分比为<span style=\'color: #d43f3a\'>'+(parseFloat(item.percent)*100).toFixed(2)+'</span>%</td></tr>';
+                strg+='</span>分钟，</td><td style="text-align: left;margin: 10px">手续费百分比为<span style=\'color: #d43f3a\'>'+(parseFloat(item.percent)*100).toFixed(2)+'</span>%</td></tr>';
                 $("#strategyContent").append($(strg));
 
             });

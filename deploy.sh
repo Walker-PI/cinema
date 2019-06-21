@@ -24,8 +24,8 @@ killTomcat()
 
 # 不用maven构建时需要的maven命令
 cd $PROJ_PATH/cinema
- mvn clean install -DskipTests
-#mvn clean install
+#mvn clean install -DskipTests
+mvn clean install
 
 # 重命名
 mv $PROJ_PATH/cinema/target/cinema-0.0.1-SNAPSHOT.war $PROJ_PATH/cinema/target/cinema.war

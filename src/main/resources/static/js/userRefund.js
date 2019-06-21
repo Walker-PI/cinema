@@ -28,7 +28,7 @@ $(document).ready(function () {
         });
 
     getRequest(
-        "/ticket/get/refund?tickedId="+order.ticketId,
+        "/ticket/get/refund?ticketId="+order.ticketId,
         function (res) {
             if(res.success){
                 refund=res.content;

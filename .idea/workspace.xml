@@ -108,21 +108,34 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/com/example/cinema/controller/sales/TicketControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
-              <caret line="48" column="83" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
+              <caret line="48" column="81" selection-start-line="48" selection-start-column="81" selection-end-line="48" selection-end-column="81" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/example/cinema/blImpl/management/hall/HallServiceImplTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userRefund.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+            <state relative-caret-position="292">
+              <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#td#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>calculateRefund</find>
+      <find>退款百分比</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -136,6 +149,7 @@
         <option value="$PROJECT_DIR$/src/test/java/com/example/cinema/blImpl/management/movie/MovieServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/cinema/blImpl/management/role/RoleServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/TicketServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/userRefund.js" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/cinema/controller/sales/TicketControllerTest.java" />
       </list>
     </option>
@@ -228,6 +242,30 @@
               <item name="cinema" type="462c0819:PsiDirectoryNode" />
               <item name="blImpl" type="462c0819:PsiDirectoryNode" />
               <item name="sales" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
@@ -389,7 +427,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561082394518</updated>
-      <workItem from="1561082395765" duration="1462000" />
+      <workItem from="1561082395765" duration="2956000" />
     </task>
     <task id="LOCAL-00001" summary="单元测试相关错误修改">
       <created>1561083257650</created>
@@ -405,11 +443,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561083710857</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="getRefund 期待值更改">
+      <created>1561083906080</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1561083906080</updated>
+    </task>
+    <task id="LOCAL-00004" summary="userRefund.js 退款百分比改为手续费百分比">
+      <created>1561095654815</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561095654815</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1462000" />
+    <option name="totallyTimeSpent" value="2956000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -456,7 +508,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="单元测试相关错误修改" />
     <MESSAGE value="处理数组越界问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="处理数组越界问题" />
+    <MESSAGE value="getRefund 期待值更改" />
+    <MESSAGE value="userRefund.js 退款百分比改为手续费百分比" />
+    <option name="LAST_COMMIT_MESSAGE" value="userRefund.js 退款百分比改为手续费百分比" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/com/example/cinema/controller/management/HallControllerTest.java">
@@ -599,10 +653,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userRefund.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="53" column="83" selection-start-line="53" selection-start-column="83" selection-end-line="53" selection-end-column="83" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/example/cinema/controller/sales/TicketControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
-          <caret line="48" column="83" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
+          <caret line="48" column="81" selection-start-line="48" selection-start-column="81" selection-end-line="48" selection-end-column="81" />
         </state>
       </provider>
     </entry>

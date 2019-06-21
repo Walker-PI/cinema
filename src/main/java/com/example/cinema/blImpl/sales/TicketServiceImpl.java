@@ -501,7 +501,7 @@ public class TicketServiceImpl implements TicketService {
             if(refundStrgList != null && refundStrgList.size() != 0){
                 //不必考虑越界,因为能够退票的都在退票范围内
                 int index = 0;
-                while(minutesDiff > refundStrgList.get(index).getEndMinute())index ++;
+                while(index < refundStrgList.size() && minutesDiff > refundStrgList.get(index).getEndMinute())index ++;
                 //考虑如果处理太多退票但是时间一直在流走导致溢出
                 if(index >= refundStrgList.size()) index = refundStrgList.size() - 1;
 

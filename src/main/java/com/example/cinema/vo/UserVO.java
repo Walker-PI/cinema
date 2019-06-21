@@ -23,6 +23,7 @@ public class UserVO {
         this.id = user.getId();
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.userType = user.getUserType();
     }
 
     public Integer getId() {

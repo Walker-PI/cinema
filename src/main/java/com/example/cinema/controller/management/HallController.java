@@ -32,8 +32,8 @@ public class HallController {
         return hallService.addHall(hallFormVO);
     }
 
-    @RequestMapping(value = "/delete/{id}" ,method = RequestMethod.DELETE)
-    public ResponseVO deleteHall(@PathVariable int id){
+    @RequestMapping(value = "/delete" ,method = RequestMethod.DELETE)
+    public ResponseVO deleteHall(@RequestParam int id){
         return hallService.deleteHall(id);
     }
 

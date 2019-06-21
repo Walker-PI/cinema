@@ -6,8 +6,20 @@ package com.example.cinema.po;
  */
 public class Hall {
     private Integer id;
+
+    /**
+     * 影厅名称
+     */
     private String name;
+
+    /**
+     * 影厅行数
+     */
     private Integer column;
+
+    /**
+     * 影厅列数
+     */
     private Integer row;
 
     public Integer getId() {

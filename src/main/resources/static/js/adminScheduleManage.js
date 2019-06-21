@@ -140,6 +140,7 @@ $(document).ready(function() {
                 if(res.success){
                     getSchedules();
                     $("#scheduleModal").modal('hide');
+                    $("#scheduleModal input").val("");
                 } else {
                     alert(res.message);
                 }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
     <title>电影详情</title>
     <!-- 引入css样式文件 -->
     <link rel="stylesheet" type="text/css" href="/css/common.css"/>
@@ -119,7 +120,7 @@
 
     <div class="nav-left-container">
         <div class="nav-user-container" style="margin-bottom: 50px;">
-            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <img class="avatar-lg" src="/images/adminIcon.jpg" />
             <p class="title">Admin</p>
         </div>
         <ul class="nav nav-pills nav-stacked">
@@ -146,7 +147,8 @@
                 <div><span>编 剧 ：</span><span id="movie-writer"></span></div>
                 <div class="movie-operations">
                     <button type="button" class="btn btn-primary" id="modify-btn" data-backdrop="static" data-toggle="modal" data-target="#movieModal"><span>修 改</span></button>
-                    <button type="button" class="btn btn-danger" id="delete-btn"><span>下 架</span></button>
+                    <button type="button" class="btn btn-danger" id="pull-btn"><span>下 架</span></button>
+                    <button type="button" class="btn btn-danger" id="delete-btn"><span>删 除</span></button>
                 </div>
             </div>
         </div>

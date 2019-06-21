@@ -7,11 +7,16 @@
         VALUES(#{target},#{add})
     </insert>
     <select id="selectAllStrategy" resultMap="CardItem">
-        select * from vip_strg;
+        select * from vip_strg order by target asc;
     </select>
     <delete id="deleteStrategyByID">
         delete from vip_strg where id=#{id}
     </delete>
+
+    <delete id="deleteAllStrategies">
+        delete from vip_strg
+    </delete>
+
     <update id="updateStrategy">
         update vip_strg set target=#{target},`add`=#{add} where id=#{id}
     </update>

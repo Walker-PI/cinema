@@ -24,12 +24,6 @@ public interface TicketMapper {
     //TODO:
     void insertTicketsInOrder(@Param("orderId")int orderId,@Param("ticketId") List<Integer>ticketIdList);
 
-    //TODO:
-    void deleteOrder(int orderId);
-
-    //TODO:
-    void deleteTicketsInOrder(int orderId);
-
     void deleteTicket(int ticketId);
 
     void updateTicketState(@Param("ticketId") int ticketId, @Param("state") int state);

@@ -17,4 +17,11 @@ public interface CouponService {
     ResponseVO issueCoupon(int couponId,int userId);
 
     ResponseVO issueCoupons(int couponId,List<Integer>userIds);
+
+    /**
+     * 成功时返回一个VIPUserVOList
+     * @param spend
+     * @return
+     */
+    ResponseVO getVIPBySpend(double spend);
 }

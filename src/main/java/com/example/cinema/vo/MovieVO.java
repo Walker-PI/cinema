@@ -75,6 +75,9 @@ public class MovieVO {
      */
     private Integer likeCount;
 
+    private String bigPosterUrl;
+
+
     public MovieVO(Movie movie){
         this.id = movie.getId();
         this.name = movie.getName();
@@ -92,6 +95,7 @@ public class MovieVO {
         this.islike = movie.getIslike();
         this.likeCount = movie.getLikeCount();
         this.endDate = movie.getEndDate();
+        this.bigPosterUrl = movie.getBigPosterUrl();
     }
 
     public MovieVO(){}
@@ -222,5 +226,13 @@ public class MovieVO {
 
     public Date getEndDate() {
         return endDate;
+    }
+
+    public void setBigPosterUrl(String bigPosterUrl) {
+        this.bigPosterUrl = bigPosterUrl;
+    }
+
+    public String getBigPosterUrl() {
+        return bigPosterUrl;
     }
 }

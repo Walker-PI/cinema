@@ -47,7 +47,7 @@ public class Ticket {
 
     /**
      * 是否使用优惠券
-     * 0：没使用  1：使用
+     * 0：没使用  >= 1：使用 useCoupon = couponId
      */
     private int useCoupon;
 

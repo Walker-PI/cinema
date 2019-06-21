@@ -10,6 +10,10 @@ public class MovieScheduleTime {
      * 排片次数
      */
     private Integer time;
+
+    /**
+     * 电影名
+     */
     private String name;
 
     public Integer getMovieId() {

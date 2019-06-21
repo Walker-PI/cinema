@@ -32,7 +32,7 @@ public interface RoleMapper {
      * @param username
      * @return
      */
-    User selectUserByName(String username);
+    List<User> selectUserByName(String username);
 
     /**
      * 通过用户的ID查找用户

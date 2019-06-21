@@ -12,6 +12,19 @@
         select * from user where id=#{userid}
     </select>
 
+    <select id="selectVIPUserBySpendAmount" resultMap="VIPUserVO">
+        select user.id,username,sum(history.fare)as amount from history,user
+        inner join vip_card on user.id = vip_card.user_id
+        where user.id = history.user_id
+        GROUP BY user.id, username
+        having amount>=#{amount}
+    </select>
+
     <resultMap id="User" type="com.example.cinema.po.User">
+    </resultMap>
+    <resultMap id="VIPUserVO" type="com.example.cinema.vo.VIPUserVO">
+        <result column="id" property="id"></result>
+        <result column="username" property="name"></result>
+        <result column="amount" property="spend"></result>
     </resultMap>
 </mapper>

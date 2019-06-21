@@ -2,6 +2,7 @@ package com.example.cinema.blImpl.management.movie;
 
 import com.example.cinema.bl.management.MovieService;
 import com.example.cinema.blImpl.management.schedule.MovieServiceForBl;
+import com.example.cinema.blImpl.management.hall.ScheduleServiceForHallBl;
 import com.example.cinema.blImpl.management.schedule.ScheduleServiceForBl;
 import com.example.cinema.data.management.MovieMapper;
 import com.example.cinema.po.Movie;
@@ -10,6 +11,7 @@ import com.example.cinema.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -155,6 +157,28 @@ public class MovieServiceImpl implements MovieService, MovieServiceForBl {
             }
         }
         return ResponseVO.buildSuccess();
+    }
+
+    @Override
+    public ResponseVO searchAllOrderByLikeNum(int num){
+        try{
+            return ResponseVO.buildSuccess(movieList2MovieVOList(
+                    movieMapper.selectMovieOrderByLikeNum(num)));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("查询失败");
+        }
+    }
+
+    @Override
+    public ResponseVO searchAllOutMovie(int num){
+        try{
+            return ResponseVO.buildSuccess(movieList2MovieVOList(
+                    movieMapper.selectAllOutMovie(num,new Timestamp(new Date().getTime()))));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("查询失败");
+        }
     }
 
 

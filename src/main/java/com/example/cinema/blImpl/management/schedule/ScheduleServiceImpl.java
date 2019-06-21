@@ -3,6 +3,7 @@ import java.util.Date;
 
 import com.example.cinema.bl.management.ScheduleService;
 import com.example.cinema.blImpl.management.hall.HallServiceForBl;
+import com.example.cinema.blImpl.management.hall.ScheduleServiceForHallBl;
 import com.example.cinema.data.management.ScheduleMapper;
 import com.example.cinema.po.Movie;
 import com.example.cinema.po.ScheduleItem;
@@ -19,7 +20,7 @@ import java.util.*;
  * @date 2019/4/11 4:14 PM
  */
 @Service
-public class ScheduleServiceImpl implements ScheduleService, ScheduleServiceForBl {
+public class ScheduleServiceImpl implements ScheduleService, ScheduleServiceForHallBl,ScheduleServiceForBl {
     private static final String TIME_CONFLICT_ERROR_MESSAGE = "时间段冲突";
     private static final String CROSS_DAYS_ERROR_MESSAGE = "起止时间不能跨天";
     private static final String DATE_INTERVAL_LESS_THAN_LENGTH_ERROR_MESSAGE = "起止时间段不能少于电影时长或结束时间不能早于开始时间";

@@ -14,6 +14,7 @@ $(document).ready(function(){
             function (res) {
                 getMovieList();
                 $("#movieModal").modal('hide');
+                $("#movieModal input").val("");
             },
              function (error) {
                 alert(error);
@@ -26,6 +27,7 @@ $(document).ready(function(){
             startDate: $('#movie-date-input').val(),
             endDate:$('#movie-enddate-input').val(),
             posterUrl: $('#movie-img-input').val(),
+            bigPosterUrl: $('#movie-big-img-input').val(),
             description: $('#movie-description-input').val(),
             type: $('#movie-type-input').val(),
             length: $('#movie-length-input').val(),
@@ -46,6 +48,10 @@ $(document).ready(function(){
         if(!data.posterUrl) {
             isValidate = false;
             $('#movie-img-input').parent('.form-group').addClass('has-error');
+        }
+        if(!data.bigPosterUrl) {
+            isValidate = false;
+            $('#movie-big-img-input').parent('.form-group').addClass('has-error');
         }
         if(!data.startDate) {
             isValidate = false;

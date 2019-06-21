@@ -63,6 +63,12 @@ public class MovieForm {
      */
     private Integer status;
 
+    /**
+     * 大图片URL
+     */
+    private String bigPosterUrl;
+
+
     public Integer getId() {
         return id;
     }
@@ -173,5 +179,13 @@ public class MovieForm {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String getBigPosterUrl() {
+        return bigPosterUrl;
+    }
+
+    public void setBigPosterUrl(String bigPosterUrl) {
+        this.bigPosterUrl = bigPosterUrl;
     }
 }

@@ -41,8 +41,8 @@ public interface HallMapper {
     /**
      * 更新影院信息
      * @param name
-     * @param line
+     * @param column
      * @param row
      */
-    void updateHall(@Param("id")int id,@Param("name")String name,@Param("line")int line,@Param("row")int row);
+    void updateHall(@Param("id")int id,@Param("name")String name,@Param("column")int column,@Param("row")int row);
 }

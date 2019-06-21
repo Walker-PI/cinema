@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+
     <title>退票策略</title>
     <link rel="stylesheet" type="text/css" href="/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminPromotion.css"/>
     <link rel="stylesheet" type="text/css" href="/css/adminSchedule.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/touch.css"/>
 
 
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/request.js"></script>
-    <script src="/js/adminScheduleManage.js"></script>
+
+
 </head>
 <body>
 
 <div class="main-container">
     <div class="nav-left-container">
         <div class="nav-user-container" style="margin-bottom: 50px;">
-            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <img class="avatar-lg" src="/images/adminIcon.jpg" />
             <p class="title">Admin</p>
+
         </div>
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation"><a href="/admin/movie/manage"><i class="icon-film"></i> 电影管理</a></li>
@@ -33,13 +36,85 @@
     </div>
     <div class="content-container">
         <div class="content-header">
-            <span class="title gray-text">已上架电影</span>
-            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#movieModal"><i class="icon-plus-sign"></i> 上架电影</button>
+            <span class="title gray-text">退票策略</span>
+            <div>
+                <button type="button" id="ackButton" class="btn btn-primary" data-backdrop="static" style="padding: 5px;"><i class="icon-plus-sign"></i> 确认更改</button>
+                <button type="button" id="newButton" class="btn btn-primary" data-backdrop="static" style="padding: 5px;"><i class="icon-plus-sign"></i> 新增策略</button>
+            </div>
         </div>
-        <ul class="movie-on-list">
-        </ul>
+        <div class="content-activity">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox">
+                            <div class="ibox-content" id="strategyList">
+<!--                                <div class="row straitem" style="background-color: rgb(255,255,255);padding: 8px">-->
+<!--                                    <div class="col-md-4">-->
+
+<!--                                        <p class="font-bold">-->
+<!--                                            开场前几分钟-->
+<!--                                        </p>-->
+
+<!--                                        <input class="touchspin1" type="text" value="" name="demo1">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-4">-->
+<!--                                        <p class="font-bold">-->
+<!--                                            退款百分比-->
+<!--                                        </p>-->
+<!--                                        <input class="touchspin2" type="text" value="55" name="demo2">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-4">-->
+
+<!--                                        <p class="font-bold">-->
+<!--                                            取消策略-->
+<!--                                        </p>-->
+<!--                                        <button type="button" class="btn btn-w-m btn-danger deleteStrategy">删除</button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </div>
 </div>
+</div>
+
+
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/request.js"></script>
+<script src="/js/footable.js"></script>
+<script src="/js/slimscroll.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/jquery.metisMenu.js"></script>
+<script src="/js/adminScheduleManage.js"></script>
+<script src="/js/touch.js"></script>
+<script>
+    $(".touchspin1").TouchSpin({
+        buttondown_class: 'btn btn-white',
+        buttonup_class: 'btn btn-white',
+        min: -9999999,
+        max:150,
+        step:1,
+    });
+    $(".touchspin2").TouchSpin({
+        min: 0,
+        max: 100,
+        step: 0.1,
+        decimals: 2,
+        boostat: 5,
+        maxboostedstep: 10,
+        postfix: '%',
+        buttondown_class: 'btn btn-white',
+        buttonup_class: 'btn btn-white'
+    });
+    $('.dual_select').bootstrapDualListbox({
+        selectorMinimalHeight: 160
+    });
+</script>
+<script src="/js/adminTicketStrategy.js"></script>
+
+
 
 </body>
+
 </html>

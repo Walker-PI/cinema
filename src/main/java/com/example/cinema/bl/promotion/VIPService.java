@@ -11,7 +11,7 @@ import com.example.cinema.vo.ResponseVO;
 
 public interface VIPService {
 
-    ResponseVO addVIPCard(int userId);
+    ResponseVO addVIPCard(int userId,double fare);
 
     ResponseVO getCardById(int id);
 
@@ -21,7 +21,11 @@ public interface VIPService {
 
     ResponseVO getCardByUserId(int userId);
 
-    ResponseVO upgradeCard(int userId);
+    ResponseVO upgradeCard(int userId,double fare);
 
-    ResponseVO getChargeHistory(int userId);
+    ResponseVO makeChargeRequest(VIPCardForm vipCardForm);
+
+    ResponseVO makeBuyCardRequest(int userId,double fare);
+
+    ResponseVO makeUpgradeCardRequest(int userId,double fare);
 }

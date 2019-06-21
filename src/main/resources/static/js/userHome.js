@@ -1,11 +1,183 @@
 $(document).ready(function () {
-    var i=1;
-        $('.imgtoslide').each(function () {
-            $(this).append("<img src=\"../images/"+i+".jpg\">");
-            i++;
-        })
+
+    // var likeList=[];
+    // var boxList=[];
+    // var outList=[];
+    // function getPopular(){
+    //     var popular=[];
+    //     getRequest(
+    //         '/statistics/popular/movie?days='+7+'&movieNum='+5,
+    //         function (res) {
+    //             if(res.success){
+    //                 popular=res.content;
+    //             } else{
+    //                 alert('popular'+JSON.stringify(res.message));
+    //             }
+    //         },
+    //         function (err) {
+    //             alert('popular fail'+JSON.stringify(err));
+    //         },
+    //     );
+    //     return popular;
+    // }
+    // function getOut(){
+    //     var out=[];
+    //     getRequest(
+    //         '/movie/out/list?num=5',
+    //         function (res) {
+    //             if(res.success){
+    //                 out=res.content;
+    //             } else{
+    //                 alert('out'+JSON.stringify(res.message));
+    //             }
+    //         },
+    //         function (err) {
+    //             alert('out'+JSON.stringify(err));
+    //         },
+    //     );
+    //     return out;
+    // }
+    // function getLike(){
+    //     getRequest(
+    //         '/movie/like/list?num=5',
+    //         function (res) {
+    //             if(res.success){
+    //                 likeList=res.content;
+    //                 alert(JSON.stringify(like));
+    //             } else{
+    //                 alert('like'+JSON.stringify(res.message));
+    //             }
+    //         },
+    //         function (err) {
+    //             alert('like'+JSON.stringify(err));
+    //         },
+    //     );
+    //
+    // }
+    // likeList=getLike();
+    // // boxList=getPopular();
+    // // outList=getOut();
+    // var i=0;
+    // // $('.imgtoslide').each(function () {
+    // //     getLike();
+    // //     alert('likeList'+i+" " +JSON.stringify(likeList));
+    // //     var list=likeList;
+    // //     alert(list[i].bigPosterUrl)
+    // //     $(this).append("<img src='"+list[i].bigPosterUrl+"'>");
+    // //     $(this).href+=list[i].id;
+    // //     $(this).title=list[i].name;
+    // //     i++;
+    // // });
+    // // var i=1;
+    // $('.imgtoslide').each(function () {
+    //     $(this).append("<img src='https://bossaudioandcomic-1252317822.file.myqcloud.com/activity/document/da505b7f0abfdd6fac6d8bdad81ddc03.jpg'>");
+    //     i++;
+    // });
+
+
+
+    function getPopular(){
+        var popular=[];
+        getRequest(
+            '/statistics/popular/movie?days='+7+'&movieNum='+10,
+            function (res) {
+                if(res.success){
+                    popular=res.content;
+                    popular=popular||[];
+                    var DOM="";
+                    popular.forEach(function (item) {
+                        DOM+= "<div class=\"statistic-item\" style='border-radius:8px;height:38px;padding: 4px;margin: 4px;background-color: rgba(210, 225, 202, 0.13)'>\n" +
+                            "     <span style='font-size:16px;'>"+item.name+"</span>\n" +
+                            "     <span style='font-size:16px;' class=\"error-text\">"+item.boxOffice+"</span>\n" +
+                            "</div>";
+
+                    });
+                    $('#boxOfMovie').append(DOM);
+                } else{
+                    alert('popular'+JSON.stringify(res.message));
+                }
+            },
+            function (err) {
+                alert('popular fail'+JSON.stringify(err));
+            },
+        );
+
     }
-);
+    function getOut(){
+        var out=[];
+        getRequest(
+            '/movie/out/list?num=6',
+            function (res) {
+                if(res.success){
+                    out=res.content;
+                    var DOM="";
+                    out.forEach(function (item) {
+                                DOM+="<div class=\"col-md-2\">\n" +
+                                "            <div class=\"ibox\" >\n" +
+                                "                <div class=\"ibox-content product-box\" style='border-radius: 8px'>\n" +
+                                "                    <div class=\"product-imitation\" style='padding: 0px;border-radius: 8px'>\n" +
+                                "                       <img style='height: 210px;width: 175.22px border-radius: 8px' src='"+item.posterUrl+"'/> \n"+
+                                "                    </div>\n" +
+                                "                    <div class=\"product-desc\">\n" +
+                                "                        <a href='/user/movieDetail\?id="+item.id+"' class='product-name'> "+item.name+"</a>\n" +
+                                "                        <div class=\"small m-t-xs\">\n" +
+                                "                        </div>\n" +
+                                "                    </div>\n" +
+                                "                </div>\n" +
+                                "            </div>\n" +
+                                "        </div>"
+                    });
+                    $("#iscoming").append(DOM);
+                } else{
+                    alert('out'+JSON.stringify(res.message));
+                }
+            },
+            function (err) {
+                alert('out'+JSON.stringify(err));
+            },
+        );
+
+    }
+    function getLike(){
+        var like=[];
+        getSyncRequest(
+            '/movie/like/list?num=5',
+            function (res) {
+                if(res.success){
+                    like=res.content;
+                    var i=0;
+                    $('.imgtoslide').each(function () {
+                        var list=like;
+                        $(this).append("<img style='width: inherit;height:400px;' src='"+list[i].bigPosterUrl+"'>");
+                        $(".imgtoslide")[i].href+=list[i].id;
+                        $(".imgtoslide")[i].title=list[i].name;
+                        i++;
+                    });
+                    // $('.imgtoslide').each(function () {
+                    //     $(this).append("<img src='../images/adminIcon.jpg'>");
+                    //     i++;
+                    // });
+
+                } else{
+                    alert('like'+JSON.stringify(res.message));
+                }
+            },
+            function (err) {
+                alert('like'+JSON.stringify(err));
+            },
+        );
+
+    }
+
+    getLike();
+    getPopular();
+    getOut();
+
+
+
+
+
+});
 (function($) {
 
     $.fn.slideBox = function(options) {

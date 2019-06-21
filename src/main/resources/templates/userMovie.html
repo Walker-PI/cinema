@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
     <title>电影</title>
     <!-- Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
@@ -31,42 +32,60 @@
         <div class="btn-group">
             <button class="nav-user-container btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="avatar-sm" src="/images/defaultAvatar.jpg" />
-                <span class="gray-text" style="vertical-align: middle">用户A&nbsp;<span class="caret"></span></span>
+                <span class="gray-text" id="usernamespan" style="vertical-align: middle">用户A&nbsp;<span class="caret"></span></span>
+                <script>
+                    $('#usernamespan').text(sessionStorage.getItem('username'));
+                </script>
             </button>
             <ul class="dropdown-menu">
                 <li><a href="/user/buy">电影票</a></li>
                 <li><a href="/user/member">卡包</a></li>
+                <li><a href="/user/history">历史消费记录</a></li>
                 <li id="logout"><a href="#">登出</a></li>
             </ul>
         </div>
     </div>
     <div class="content-container">
         <div class="filler-container card">
-            <div class="input-group" style="width: 800px">
+            <div class="input-group" style="width: 800px;padding: 7px">
                 <input type="text" class="form-control" id="search-input" placeholder="请输入关键字">
                 <span class="input-group-btn">
                     <button class="btn btn-default" id="search-btn" type="button">搜索</button>
                 </span>
             </div>
-            <ul class="filler-item" style="display: flex">
+            <ul class="filler-item nav nav-pills" id="typefilter" style="display: flex;padding: 7px;">
                 <span>类型：</span>
-                <li><a class="active">全部</a></li>
-                <li><a>科幻</a></li>
-                <li><a>喜剧</a></li>
-                <li><a>科幻</a></li>
-                <li><a>喜剧</a></li>
-                <li><a>todo筛选</a></li>
+                <li role="presentation"><a  href="#" class="active">全部</a></li>
+                <li role="presentation"><a  href="#">科幻</a></li>
+                <li role="presentation"><a  href="#">喜剧</a></li>
+                <li role="presentation"><a  href="#">动作</a></li>
+                <li role="presentation"><a  href="#">冒险</a></li>
+                <li role="presentation"><a  href="#">爱情</a></li>
+                <li role="presentation"><a  href="#">动画</a></li>
+                <li role="presentation"><a  href="#">todo筛选</a></li>
             </ul>
-            <ul class="filler-item" style="display: flex">
+            <ul class="filler-item nav nav-pills" id="showfilter"  style="display: flex;padding: 7px;">
                 <span>状态：</span>
-                <li><a class="active">全部</a></li>
-                <li><a>上映中</a></li>
-                <li><a>未上映</a></li>
-                <li><a>已下架</a></li>
+                <li ><a   href="#" class="active">全部</a></li>
+                <li role="presentation"><a  href="#">上映中</a></li>
+                <li role="presentation"><a  href="#">未上映</a></li>
+                <li role="presentation"><a  href="#">已下架</a></li>
             </ul>
         </div>
         <ul class="movie-on-list">
         </ul>
     </div>
+
+
+
+    <li class="user-item card">
+        <img src="" class="user-photo" />
+        <div class="user-name">
+
+        </div>
+        <div class="user-type">
+
+        </div>
+    </li>
 </body>
 </html>

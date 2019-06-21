@@ -15,7 +15,7 @@
     </select>
 
     <select id="selectUserByName" resultMap="User">
-        select * from user where username=#{username}
+        select * from user where username like concat('%',#{username},'%')
     </select>
 
     <select id="selectUserByID" resultMap="User">

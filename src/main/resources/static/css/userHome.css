@@ -1,6 +1,15 @@
+span{
+    color: black;
+}
+.fadeInRight{
+    background-color:#e4e7ea ;
+}
 .content-container {
     display: flex;
+    flex-direction:row ;
     padding: 20px 20px;
+    height: fit-content;
+
 }
 
 .movie-item {
@@ -36,18 +45,17 @@
 }
 
 .movie-contianer {
-    display: flex;
     flex-direction: column;
-    flex: 1;
-    height: 850px;
+    flex:1;
+    width: available;
+    height: 450px;
     justify-content: space-between;
 }
 
 .statistic-container {
-    display: flex;
     flex-direction: column;
     width: 300px;
-    height: 850px;
+    height: 450px;
     justify-content: space-between;
     margin-left: 40px;
 }
@@ -63,4 +71,9 @@
     flex-direction: column;
     height: 400px;
     padding: 10px 20px;
+}
+
+.slideBox{
+    height: 400px !important;
+    width: inherit !important;
 }

@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 var isBuyState = true;
 var vipCardId;
+var payState=0;//0为银行卡支付，1为支付宝支付
 
 function getVIP() {
     getRequest(
@@ -29,14 +30,34 @@ function getVIP() {
         function (error) {
             alert(error);
         });
+    getRequest(
+        "/vip/getVIPInfo",
+        function (res) {
+            if(res.success){
+                $("#member-buy-price").text(res.content.price);
+            }else {
+                alert(res.content);
+            }
+        },
+    function (error) {
+        alert(error);
+        }
+    );
 
     getRequest(
-        '/vip/getVIPInfo',
+        '/vipStrategy/get',
         function (res) {
             if (res.success) {
-                $("#member-buy-price").text(res.content.price);
-                $("#member-buy-description").text("充值优惠：" + res.content.description + "。永久有效");
-                $("#member-description").text(res.content.description);
+                var description="";
+                res.content.forEach(function (strategy) {
+                    description+="<div style='padding-left: 5px'> 满<span style='color: #d43f3a'>"+strategy.target+"</span>送<span style='color: #d43f3a'>"+strategy.add+"</span></div>";
+                });
+                $("#member-buy-description").empty();
+                $("#member-valid-description").empty();
+                $("#member-description").empty();
+                $("#member-buy-description").append("<div>充值优惠：</div>" + description );
+                $("#member-valid-description").append("<div>会员有效期：</div><div>永久有效</div>");
+                $("#member-description").append(description);
             } else {
                 alert(res.content);
             }
@@ -56,7 +77,7 @@ function buyClick() {
 
 function chargeClick() {
     clearForm();
-    $('#buyModal').modal('show')
+    $('#buyModal').modal('show');
     $("#userMember-amount-group").css("display", "");
     isBuyState = false;
 }
@@ -67,51 +88,102 @@ function clearForm() {
     $('#userMember-form p').css("visibility", "hidden");
 }
 
+function switchPay(type) {
+    payState = type;
+    if (type === 0) {
+        $("#bank-pay").addClass("active");
+        $("#ali-pay").removeClass("active");
+
+        $("#modal-body-bank").css("display", "");
+        $("#modal-body-ali").css("display", "none");
+    } else {
+        $("#bank-pay").removeClass("active");
+        $("#ali-pay").addClass("active");
+
+        $("#modal-body-bank").css("display", "none");
+        $("#modal-body-ali").css("display", "");
+    }
+}
+
 function confirmCommit() {
     if (validateForm()) {
-        if ($('#userMember-cardNum').val() === "123123123" && $('#userMember-cardPwd').val() === "123123") {
-            if (isBuyState) {
-                postRequest(
-                    '/vip/add?userId=' + sessionStorage.getItem('id'),
-                    null,
-                    function (res) {
+        var url='';
+        if (isBuyState) {
+            if(payState===0){
+                url='/vip/add/directly?userId=' + sessionStorage.getItem('id') + '&fare=25';
+                if ($('#userMember-cardNum').val() === "123123123" && $('#userMember-cardPwd').val() === "123123") {
+
+                } else {
+                    alert("银行卡号或密码错误");
+                    return;
+                }
+            }
+
+            else
+                url='/vip/add?userId=' + sessionStorage.getItem('id') + '&fare=25'
+            postRequest(
+                url,
+                null,
+                function (res) {
+                    if(payState===1)
+                        document.write(res.content);
+                    else {
                         $('#buyModal').modal('hide');
                         alert("购买会员卡成功");
                         getVIP();
-                    },
-                    function (error) {
-                        alert(error);
-                    });
-            } else {
-                postRequest(
-                    '/vip/charge',
-                    {vipId: vipCardId, amount: parseInt($('#userMember-amount').val())},
-                    function (res) {
+                    }
+                },
+                function (error) {
+                    alert(error);
+                });
+        } else {
+            amount=parseInt($('#userMember-amount').val());
+            url='/vip/charge';
+            if(payState===0){
+                url+='/directly';
+                if ($('#userMember-cardNum').val() === "123123123" && $('#userMember-cardPwd').val() === "123123") {
+
+                } else {
+                    alert("银行卡号或密码错误");
+                    return;
+                }
+            }
+            postRequest(
+                url,
+                {vipId: vipCardId, amount: amount},
+                function (res) {
+                    if(payState===1)
+                        document.write(res.content);
+                    else {
                         $('#buyModal').modal('hide');
                         alert("充值成功");
                         getVIP();
-                    },
-                    function (error) {
-                        alert(error);
-                    });
-            }
-        } else {
-            alert("银行卡号或密码错误");
+                        if($('#chargeInfo').attr("display")!="none"){
+                            $('#chargeHistory').empty();
+                            getHistoryList();
+                        }
+                    }
+                },
+                function (error) {
+                    alert(error);
+                });
         }
     }
 }
 
 function validateForm() {
     var isValidate = true;
-    if (!$('#userMember-cardNum').val()) {
-        isValidate = false;
-        $('#userMember-cardNum').parent('.form-group').addClass('has-error');
-        $('#userMember-cardNum-error').css("visibility", "visible");
-    }
-    if (!$('#userMember-cardPwd').val()) {
-        isValidate = false;
-        $('#userMember-cardPwd').parent('.form-group').addClass('has-error');
-        $('#userMember-cardPwd-error').css("visibility", "visible");
+    if(payState===0){
+        if (!$('#userMember-cardNum').val()) {
+            isValidate = false;
+            $('#userMember-cardNum').parent('.form-group').addClass('has-error');
+            $('#userMember-cardNum-error').css("visibility", "visible");
+        }
+        if (!$('#userMember-cardPwd').val()) {
+            isValidate = false;
+            $('#userMember-cardPwd').parent('.form-group').addClass('has-error');
+            $('#userMember-cardPwd-error').css("visibility", "visible");
+        }
     }
     if (!isBuyState && (!$('#userMember-amount').val() || parseInt($('#userMember-amount').val()) <= 0)) {
         isValidate = false;
@@ -138,7 +210,7 @@ function getCoupon() {
                         coupon.description +
                         '</div>' +
                         '<div class="price">' +
-                        '满' + coupon.targetAmount + '减' + coupon.discountAmount +
+                        '满' + coupon.targetAmount + '送' + coupon.discountAmount +
                         '</div>' +
                         '</div>' +
                         '<div class="col-md-4 right">' +
@@ -157,4 +229,38 @@ function getCoupon() {
 
 function formatDate(date) {
     return date.substring(5, 10).replace("-", ".");
+}
+
+function chargeCheck() {
+    $('#VIPInfo').css("display", "none");
+    $('#chargeInfo').css("display", "");
+    getHistoryList();
+}
+
+function getHistoryList() {
+    getRequest(
+        '/history/all/' + sessionStorage.getItem('id'),
+        function (res) {
+            res.content.map(function (item) {
+                var historycontent = $('#chargeHistory');
+                var singleHistoryMessage = '<div class="line" >';
+                if(item.type==='charge'){
+                    singleHistoryMessage = singleHistoryMessage + '<div>' + item.time.split(".")[0].replace("T"," ") + '</div>';
+                    singleHistoryMessage = singleHistoryMessage + '<div>¥' + item.fare + '</div>';
+                }
+                singleHistoryMessage += '</div>';
+                var historyBlock = $(singleHistoryMessage);
+                historycontent.append(historyBlock);
+
+            });
+        },
+        function (error) {
+            alert(error);
+        });
+}
+
+function checkComplete() {
+    $('#VIPInfo').css("display", "");
+    $('#chargeInfo').css("display", "none");
+    $('#chargeHistory').empty();
 }

@@ -11,7 +11,7 @@ public class VIPCard {
 
     public static final double price = 25;
 
-    public static final String description="满200送30";
+    public static final String description="";
 
     /**
      * 用户id
@@ -74,10 +74,6 @@ public class VIPCard {
 
     public void setJoinDate(Timestamp joinDate) {
         this.joinDate = joinDate;
-    }
-
-    public double calculate(double amount) {
-        return (int)(amount/200)*30+amount;
     }
 
     public void setVipType(int vipType) {

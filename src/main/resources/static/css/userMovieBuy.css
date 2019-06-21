@@ -79,6 +79,27 @@
     color: #1caf9a;
 }
 
+#countdown{
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 20%;
+}
+
+#countdown p{
+    color:#1caf9a;
+    font-size:24px;
+    text-align:center;
+    line-height:45px;
+    padding:0px 10px ;
+}
+
+#countdown p span{
+    color:#000000;
+    font-weight:bold;
+    font-size:35px;
+    padding:0px 10px;
+}
+
 hr.dashed-line {
     border: 1px dashed #eeeeee
 }
@@ -95,3 +116,4 @@ hr.dashed-line {
     margin-top: 25px;
     font-size: 20px;
 }
+

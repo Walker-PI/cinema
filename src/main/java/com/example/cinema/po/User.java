@@ -8,13 +8,30 @@ import com.example.cinema.vo.RoleForm;
  */
 public class User {
     private Integer id;
+
+    /**
+     * 用户名
+     */
     private String username;
+
+    /**
+     * 密码
+     */
     private String password;
 
+    /**
+     * 头像海报
+     */
     private String photoURL;
 
+    /**
+     * 用户类型
+     */
     private int userType;
 
+    /**
+     * 用户邮箱
+     */
     private String email;
 
     public Integer getId() {

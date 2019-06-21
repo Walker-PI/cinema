@@ -6,8 +6,11 @@ import com.example.cinema.po.User;
 import com.example.cinema.vo.UserForm;
 import com.example.cinema.vo.ResponseVO;
 import com.example.cinema.vo.UserVO;
+import com.example.cinema.vo.VIPUserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author huwen
@@ -54,5 +57,11 @@ public class AccountServiceImpl implements AccountService,AccountServiceForBl {
         }catch (Exception e){
             return false;
         }
+    }
+
+    public List<VIPUserVO> getVIPUserListBySpendAmount(double amount){
+        List<VIPUserVO>vipUserVOS
+                =accountMapper.selectVIPUserBySpendAmount(amount);
+        return vipUserVOS;
     }
 }

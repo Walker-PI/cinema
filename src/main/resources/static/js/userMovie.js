@@ -20,7 +20,7 @@ $(document).ready(function(){
             movie.description = movie.description || '';
             movieDomStr +=
                 "<li class='movie-item card'>" +
-                "<img class='movie-img' src='" + (movie.posterUrl || "../images/defaultAvatar.jpg") + "'/>" +
+                "<img class='movie-img' src='" + movie.posterUrl + "'/>" +
                 "<div class='movie-info'>" +
                 "<div class='movie-title'>" +
                 "<span class='primary-text'>" + movie.name + "</span>" +
@@ -29,8 +29,8 @@ $(document).ready(function(){
                 "</div>" +
                 "<div class='movie-description dark-text'><span>" + movie.description + "</span></div>" +
                 "<div>类型：" + movie.type + "</div>" +
-                "<div style='display: flex'><span>导演：" + movie.director + "</span><span style='margin-left: 30px;'>主演：" + movie.starring + "</span>" +
-                "<div class='movie-operation'><a href='/user/movieDetail?id="+ movie.id +"'>详情</a></div></div>" +
+                "<div style='display: flex'><span>导演：" + movie.director + "</span><span style='margin-left: 30px; max-width: 80%'>主演：" + movie.starring + "</span>" +
+                "<div class='movie-operation' style='width:max-content ' ><a href='/user/movieDetail?id="+ movie.id +"'>详情</a></div></div>" +
                 "</div>"+
                 "</li>";
         });
@@ -41,4 +41,28 @@ $(document).ready(function(){
         getMovieList($('#search-input').val());
     })
 
+    $("#typefilter a").click(function () {
+        if($(this).text()==="全部")
+            getMovieList('');
+        else
+            getMovieList($(this).text());
+        $("#typefilter a").each(function () {
+            $(this).removeClass('active');
+        });
+
+        $(this).addClass('active');
+    });
+
+    $("#showfilter a").click(function () {
+        if($(this).text()==="全部")
+            getMovieList('');
+        else
+            getMovieList($(this).text());
+        $("#showfilter a").each(function () {
+            $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+    });
+
 });
+

@@ -4,9 +4,25 @@ import lombok.Data;
 @Data
 public class Order {
     int id;
+
+    /**
+     * 订单名
+     */
     String name;
+
+    /**
+     * 订单内容
+     */
     String content;
+
+    /**
+     * 订单价格
+     */
     double price;
+
+    /**
+     * 订单状态
+     */
     int status;
 
     public Order(){}

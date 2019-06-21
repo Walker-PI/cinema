@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**电影管理
- * @author fjj
- * @date 2019/3/12 6:17 PM
+ * @author lms
+ * @date 2019/6/12 14:10
  */
 @RestController
 public class MovieController {
@@ -36,6 +36,18 @@ public class MovieController {
     public ResponseVO searchAllMovie(){
         //返回结果中包括已经下架的电影
         return movieService.searchAllMovie();
+    }
+
+    @RequestMapping(value="/movie/like/list",method = RequestMethod.GET)
+    public ResponseVO searchMovieOrderByLikeNum(@RequestParam int num){
+        //返回指定数目的喜爱电影，按被喜爱数目排序，不够的时候返回实际的数目
+        return movieService.searchAllOrderByLikeNum(num);
+    }
+
+    @RequestMapping(value="/movie/out/list",method = RequestMethod.GET)
+    public ResponseVO searchOutMovie(@RequestParam int num){
+        //返回尚未上映的电影
+        return movieService.searchAllOutMovie(num);
     }
 
     @RequestMapping(value = "/movie/all/exclude/off", method = RequestMethod.GET)

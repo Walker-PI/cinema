@@ -26,4 +26,9 @@ public class CouponController {
     public ResponseVO issueCoupons(@PathVariable List<Integer>userIds,@RequestParam int couponId){
         return couponService.issueCoupons(couponId,userIds);
     }
+
+    @GetMapping("/getVIP/{spend}")
+    public ResponseVO getVIPBySpend(@PathVariable double spend){
+        return couponService.getVIPBySpend(spend);
+    }
 }

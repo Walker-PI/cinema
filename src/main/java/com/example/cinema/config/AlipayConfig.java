@@ -1,7 +1,5 @@
 package com.example.cinema.config;
 
-import com.example.cinema.httpUrl.LocalhostIp;
-
 /* *
  *类名：AlipayConfig
  *功能：基础配置类
@@ -26,10 +24,10 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwkyqPN9FeMF2CXGn18W+M8vS6PdgWRK94q/Xnq7DxKL5dISLInBG6FlvyAv03B7ln1M4qCrtNC2DFxTvV8FKaC/fIwq+D6M2xgH7OFJsV7NJ7xbfoIelnYEJBBU/wbxC+S65NSmx6l0kudoU0FcQ/iryi345R8Ogy4SXSe7/idKIm6ujjiEQp8OGYaRlsg3aYsCqAub2pF7jjBc9ju7jN+eNBKZMkym2PqsOefgxRrNliVNVKTMishSGIcEpYuYaVfyz6OLe/qVRODudbmSxxfY+Y9Cbl+AZwlQV5I/wXq6qpMGBq3P0Vm4gTA4v2GklTv7NDlyrMtWiwQrxWLIHOwIDAQAB";
 
     // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://megamawile.vipgz1.idcfengye.com/ticket/notify";
+    public static String notify_url = "http://120.77.169.189:80/notify/pay";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://megamawile.vipgz1.idcfengye.com/user/buy";
+    public static String return_url = "http://120.77.169.189:80/user/home";
 
     // 签名方式
     public static String sign_type = "RSA2";
@@ -42,26 +40,4 @@ public class AlipayConfig {
 
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-
-    /**
-     * 写日志，方便测试（看网站需求，也可以改成把记录存入数据库）
-     * @param sWord 要写入日志里的文本内容
-     */
-    /*public static void logResult(String sWord) {
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(log_path + "alipay_log_" + System.currentTimeMillis()+".txt");
-            writer.write(sWord);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }*/
 }

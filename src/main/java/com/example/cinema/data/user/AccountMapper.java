@@ -1,8 +1,11 @@
 package com.example.cinema.data.user;
 
 import com.example.cinema.po.User;
+import com.example.cinema.vo.VIPUserVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author huwen
@@ -17,19 +20,21 @@ public interface AccountMapper {
      * @param password
      * @return
      */
-    public int createNewAccount(@Param("username") String username, @Param("password") String password, @Param("email") String email, @Param("photoURL") String photoURL,@Param("userType")int userType);
+    int createNewAccount(@Param("username") String username, @Param("password") String password, @Param("email") String email, @Param("photoURL") String photoURL,@Param("userType")int userType);
 
     /**
      * 根据用户名查找账号
      * @param username
      * @return
      */
-    public User getAccountByName(@Param("username") String username);
+    User getAccountByName(@Param("username") String username);
 
     /**
      * 根据用户id查找账号
      * @param userid
      * @return
      */
-    public User getAccountById(@Param("userid") int userid);
+    User getAccountById(@Param("userid") int userid);
+
+    List<VIPUserVO>selectVIPUserBySpendAmount(double amount);
 }

@@ -33,6 +33,20 @@ public interface MovieService {
     ResponseVO searchAllMovie();
 
     /**
+     * 返回指定数目的电影，根据喜爱人数排序
+     * @param num
+     * @return
+     */
+    ResponseVO searchAllOrderByLikeNum(int num);
+
+    /**
+     * 返回指定数目的电影，根据日期排序
+     * @param num
+     * @return
+     */
+    ResponseVO searchAllOutMovie(int num);
+
+    /**
      * 搜索全部电影(不包括已经下架的)
      * @return
      */

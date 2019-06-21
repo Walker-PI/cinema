@@ -3,8 +3,8 @@
 <mapper namespace="com.example.cinema.data.management.MovieMapper">
     <insert id="insertOneMovie" parameterType="com.example.cinema.vo.MovieForm"
             useGeneratedKeys="true" keyProperty="id">
-        insert into movie(name, poster_url, director, screen_writer, starring, type, country, language, length, start_date, end_date, description, status)
-        values(#{name}, #{posterUrl}, #{director},  #{screenWriter}, #{starring}, #{type}, #{country}, #{language}, #{length}, #{startDate}, #{endDate}, #{description}, 0)
+        insert into movie(name, poster_url, director, screen_writer, starring, type, country, language, length, start_date, end_date, description, status, big_poster_url)
+        values(#{name}, #{posterUrl}, #{director},  #{screenWriter}, #{starring}, #{type}, #{country}, #{language}, #{length}, #{startDate}, #{endDate}, #{description}, 0, #{bigPosterUrl})
     </insert>
 
     <select id="selectMovieById" resultMap="Movie">
@@ -22,6 +22,25 @@
         (select l.movie_id, count(*) as likeCount from movie_like l group by l.movie_id) l
         on m.id = l.movie_id
         order by m.start_date asc
+    </select>
+
+    <select id="selectMovieOrderByLikeNum" resultMap="Movie">
+        select * from movie m
+                          left join
+                      (select l.movie_id, count(*) as likeCount from movie_like l group by l.movie_id) l
+                      on m.id = l.movie_id
+        order by likeCount desc
+        limit #{num}
+    </select>
+
+    <select id="selectAllOutMovie" resultMap="Movie">
+        select * from movie m
+                          left join
+                      (select l.movie_id, count(*) as likeCount from movie_like l group by l.movie_id) l
+                      on m.id = l.movie_id
+        where m.start_date > #{time}
+        ORDER BY m.start_date asc
+        limit #{num}
     </select>
 
     <select id="selectOtherMoviesExcludeOff" resultMap="Movie">
@@ -47,7 +66,7 @@
 
     <update id="updateMovie" parameterType="com.example.cinema.vo.MovieForm">
         update movie set poster_url = #{posterUrl}, director = #{director}, screen_writer = #{screenWriter},
-        starring = #{starring}, type = #{type}, country = #{country}, language = #{language},
+        starring = #{starring}, type = #{type}, country = #{country}, language = #{language}, big_poster_url = #{bigPosterUrl},
         length = #{length}, start_date = #{startDate}, end_date = #{endDate}, name = #{name}, description = #{description}
         where id = #{id}
     </update>
@@ -65,6 +84,7 @@
         <result column="screen_writer" property="screenWriter"></result>
         <result column="start_date" property="startDate"></result>
         <result column="end_date" property="endDate"></result>
+        <result column="big_poster_url" property="bigPosterUrl"></result>
     </resultMap>
 
 </mapper>

@@ -15,5 +15,7 @@ public interface VIPStrategyMapper {
 
     void deleteStrategyByID(int id);
 
+    void deleteAllStrategies();
+
     void updateStrategy(@Param("id")int id,@Param("target")double target,@Param("add")double add);
 }

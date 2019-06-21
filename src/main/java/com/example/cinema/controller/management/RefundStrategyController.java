@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//TODO lms
 /**
  * 退票策略
  */
@@ -25,6 +26,7 @@ public class RefundStrategyController {
 
     @PostMapping("/update")
     public ResponseVO updateAllStrategy(@RequestBody List<RefundStrgVO> refundStrgVOList){
+        System.out.println("refund ticket");
         return refundStrategyService.updateAllStrategy(refundStrgVOList);
     }
 

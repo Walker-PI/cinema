@@ -7,7 +7,7 @@
               movie where s.movie_id = movie.id group by movieId
     </select>
 
-    <select id="selectMovieTotalBoxOffice" resultType="com.example.cinema.po.MovieTotalBoxOffice">
+    <select id="selectMovieTotalBoxOffice" resultMap="MovieBox" >
         select movie.id as movieId, boxOffice,name from movie
         left join
           (select movie_id as movieId,sum(fare) as boxOffice from schedule
@@ -41,7 +41,7 @@
         select count(*) from ticket where state = 1 and schedule_id = #{scheduleId}
     </select>
 
-    <select id="selectHallByHallId" resultType="com.example.cinema.po.Hall">
+    <select id="selectHallByHallId" resultMap="Hall">
         select * from hall where id = #{hallId}
     </select>
 
@@ -51,4 +51,17 @@
           (select id as movieId, name from movie) m
             where s.movieId = m.movieId order by s.movieId desc
     </select>
+
+    <resultMap id="MovieBox" type="com.example.cinema.po.MovieTotalBoxOffice">
+        <result column="movieId" property="movieId"></result>
+        <result column="boxOffice" property="boxOffice"></result>
+        <result column="name" property="name"></result>
+    </resultMap>
+
+    <resultMap id="Hall" type="com.example.cinema.po.Hall">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
+        <result column="column_c" property="column"></result>
+        <result column="row_r" property="row"></result>
+    </resultMap>
 </mapper>

@@ -1,0 +1,7 @@
+采用民主模式
+接受参数尽量不返回null，通过try catch
+通过cloudstudio保存最新版本
+git每次都要留副本
+每次更改要在群里报告，商讨后决定怎么改
+后端用postman测试
+前端用jest

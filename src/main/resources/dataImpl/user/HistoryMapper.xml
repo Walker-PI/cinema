@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.user.HistoryMapper">
+    <insert id="insertHistory" parameterType="com.example.cinema.po.History"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into history(pay_type, time, fare, type,user_id)
+        VALUES (#{payType},#{time},#{fare},#{type},#{userId})
+    </insert>
+
+    <insert id="insertHistoryCharge">
+        insert into history_charge(history_id, balance)
+        values (#{historyId},#{balance})
+    </insert>
+
+    <insert id="insertHistoryMovie">
+        insert into history_movie(history_id, movie_name,ticket_id)
+        values (#{historyId},#{movieName},#{ticketId})
+    </insert>
+
+    <select id="selectAllHistory" resultMap="History">
+        select * from history where user_id=#{userId} order by time desc;
+    </select>
+
+    <select id="selectChargeBalance" resultType="double">
+        select balance from history_charge where history_id=#{historyId}
+    </select>
+
+    <select id="selectTicket" resultMap="HistoryMovie">
+        select * from history_movie where history_id=#{historyId}
+    </select>
+
+
+    <resultMap id="History" type="com.example.cinema.po.History">
+        <result column="id" property="id"></result>
+        <result column="pay_type" property="payType"></result>
+        <result column="time" property="time"></result>
+        <result column="fare" property="fare"></result>
+        <result column="type" property="type"></result>
+    </resultMap>
+
+    <resultMap id="HistoryMovie" type="com.example.cinema.po.HistoryMovie">
+        <result column="history_id" property="historyId"></result>
+        <result column="movie_name" property="movieName"></result>
+        <result column="ticket_id" property="ticketId"></result>
+    </resultMap>
+
+</mapper>

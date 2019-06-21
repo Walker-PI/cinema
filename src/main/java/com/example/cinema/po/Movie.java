@@ -73,6 +73,8 @@ public class Movie {
      */
     private Integer likeCount;
 
+    private String bigPosterUrl;
+
     public Integer getId() {
         return id;
     }
@@ -199,5 +201,13 @@ public class Movie {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String getBigPosterUrl() {
+        return bigPosterUrl;
+    }
+
+    public void setBigPosterUrl(String bigPosterUrl) {
+        this.bigPosterUrl = bigPosterUrl;
     }
 }

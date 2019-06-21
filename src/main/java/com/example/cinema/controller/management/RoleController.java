@@ -1,5 +1,5 @@
 package com.example.cinema.controller.management;
-
+//TODO lms
 import com.example.cinema.bl.management.RoleService;
 import com.example.cinema.vo.ResponseVO;
 import com.example.cinema.vo.RoleForm;
@@ -27,8 +27,8 @@ public class RoleController {
         return roleService.searchAllManagerAndStaff();
     }
 
-    @GetMapping("/get/name/{username}")
-    public ResponseVO getUserByUsername(@PathVariable String username){
+    @PostMapping("/getByName")
+    public ResponseVO getUserByUsername(@RequestParam String username){
         return roleService.searchUserByUserName(username);
     }
 
@@ -36,6 +36,7 @@ public class RoleController {
     public ResponseVO getUserById(@PathVariable int userId){
         return roleService.searchUserById(userId);
     }
+
     @PostMapping("/update")
     public ResponseVO updateUserType(@RequestParam int userId,@RequestParam int userType){
         return roleService.changeUserType(userId,userType);

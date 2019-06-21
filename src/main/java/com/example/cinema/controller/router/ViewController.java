@@ -48,6 +48,9 @@ public class ViewController {
     @RequestMapping(value = "/admin/movieDetail")
     public String getAdminMovieDetail(@RequestParam int id) { return "adminMovieDetail"; }
 
+    @RequestMapping(value = "/admin/ticket/strategy")
+    public String getAdminTicketStrategy() { return "adminTicketStrategy"; }
+
     @RequestMapping(value = "/user/home")
     public String getUserHome() {
         return "userHome";
@@ -76,5 +79,20 @@ public class ViewController {
     @RequestMapping(value = "/user/member")
     public String getUserMember() {
         return "userMember";
+    }
+
+    @RequestMapping(value = "/user/pay")
+    public String getUserPay() {
+        return "userPay";
+    }
+
+    @RequestMapping(value = "/user/refund")
+    public String getUserRefund() {
+        return "userRefund";
+    }
+
+    @RequestMapping(value = "/user/history")
+    public String getUserHistory() {
+        return "userHistory";
     }
 }

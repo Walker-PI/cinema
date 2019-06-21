@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>南影时光</title>
-    <script src="/js/jquery.js"></script>
+
+
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
     <!-- font-asesome图标库 -->
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/css/slideBox.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/toastr.min.css">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/userHome.css"/>
 
-    <!-- Bootstrap 核心 JavaScript 文件 -->
+
+    <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.js"></script>
-    <!-- 引入js脚本文件 -->
     <script src="/js/request.js"></script>
+
     <script src="/js/userHome.js"></script>
-    <!-- Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
-
-
     <script>
         jQuery(function($){
             $('#demo3').slideBox({
@@ -32,9 +36,12 @@
                 clickBarRadius : 10
             });
 
+
         });
 
     </script>
+
+
 </head>
 <body>
 <div class="nav-top-container">
@@ -46,25 +53,60 @@
     <div class="btn-group">
         <button class="nav-user-container btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img class="avatar-sm" src="/images/defaultAvatar.jpg" />
-            <span class="gray-text" style="vertical-align: middle">用户A&nbsp;<span class="caret"></span></span>
+
+            <span class="gray-text" id="usernamespan" style="vertical-align: middle">用户A&nbsp;<span class="caret"></span></span>
+            <script>
+                $('#usernamespan').text(sessionStorage.getItem('username'));
+            </script>
         </button>
         <ul class="dropdown-menu">
             <li><a href="/user/buy">电影票</a></li>
             <li><a href="/user/member">卡包</a></li>
+            <li><a href="/user/history">历史消费记录</a></li>
             <li id="logout"><a href="#">登出</a></li>
         </ul>
     </div>
 </div>
-<div class="content-container">
-    <div id="demo3" class="slideBox">
-        <ul class="items">
-            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
-            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
-            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
-            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
-            <li><a href="http://www.jq22.com/" class="imgtoslide" title="测试标题"></a></li>
-        </ul>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="content-container">
+        <div class="movie-contianer">
+            <p class="title primary-text">最受欢迎</p>
+            <div class="movie-on-list card slideBox" id="demo3" style="border-radius:8px;width: inherit;height: 400px">
+                <ul class="items" >
+                    <li><a href="/user/movieDetail?id=" class="imgtoslide" title=""></a></li>
+                    <li><a href="/user/movieDetail?id=" class="imgtoslide" title=""></a></li>
+                    <li><a href="/user/movieDetail?id=" class="imgtoslide" title=""></a></li>
+                    <li><a href="/user/movieDetail?id=" class="imgtoslide" title=""></a></li>
+                    <li><a href="/user/movieDetail?id=" class="imgtoslide" title=""></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="statistic-container">
+            <p class="title primary-text">热映电影</p>
+            <ul class="top-expectation-list card" style="padding: 4px;border-radius:7px;background-color: #faf7f7" id="boxOfMovie">
+
+            </ul>
+        </div>
+
+    </div>
+    <div class="row" style="padding:15px;" id="iscoming">
+        <p class="title primary-text" style="padding-left: 15px">即将上映</p>
+
+
     </div>
 </div>
+
+
+
+
+
+
+<script src="/js/pace.js"></script>
+<script src="/js/jquery.metisMenu.js"></script>
+<script src="/js/slimscroll.js"></script>
+
+
+
 </body>
 </html>

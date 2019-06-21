@@ -105,13 +105,36 @@ $(document).ready(function(){
     // });
 
     $("#delete-btn").click(function () {
-        confirm('确定要下架吗？');
+        if(!confirm('确定要删除吗？')){
+            return ;
+        }
         deleteRequest(
             '/movie/delete'+'?movieIds='+movieForm.id,
             {},
             function (res) {
-                alert('下架成功');
+                alert('删除成功');
                 window.location.href='/admin/movie/manage';
+                //window.event.returnValue=false;
+            },
+            function (error) {
+                alert('删除失败');
+            });
+        return false;
+        //alert('交给你们啦，下架别忘记需要一个确认提示框，也别忘记下架之后要对用户有所提示哦');
+    });
+    $("#pull-btn").click(function () {
+        if(!confirm('确定要下架吗？')){
+            return ;
+        }
+        var formData = {};
+        formData.movieIdList=[movieId];
+        postRequest(
+            '/movie/off/batch',
+            formData,
+            function (res) {
+                alert('下架成功');
+                getMovie();
+                // window.location.href='/admin/movie/manage';
                 //window.event.returnValue=false;
             },
             function (error) {
@@ -122,7 +145,7 @@ $(document).ready(function(){
     });
     $("#movie-form-btn").click(function () {
         var formData = getMovieForm();
-        formData.id=sessionStorage.getItem('id');
+        formData.id=movieId;
         if(!validateMovieForm(formData)) {
             alert('电影信息填写错误');
             return;

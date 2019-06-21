@@ -52,8 +52,8 @@ public class RoleServiceImpl implements RoleService {
 
     public ResponseVO searchUserByUserName(String userName){
         try{
-            User user = roleMapper.selectUserByName(userName);
-            if(user!=null)return ResponseVO.buildSuccess(user);
+            List<User> userList = roleMapper.selectUserByName(userName);
+            if(userList!=null)return ResponseVO.buildSuccess(userList);
             return ResponseVO.buildFailure("用户名不存在");
         }catch (Exception e){
             e.printStackTrace();

@@ -1,5 +1,8 @@
 
-.demo{ padding: 97px 0;background: linear-gradient(to right,#7AB6B6 50%, #E5CFAA 50%); }
+.demo{
+	height: 100%;
+	padding: 97px 0;background: linear-gradient(to right,#7AB6B6 50%, #E5CFAA 50%);
+}
 
 .form-horizontal{
 	background-color: #fff;

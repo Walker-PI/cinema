@@ -5,6 +5,7 @@ import com.example.cinema.vo.MovieForm;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -40,6 +41,20 @@ public interface MovieMapper {
      * @return
      */
     List<Movie> selectAllMovie();
+
+    /**
+     * 展示指定数目电影并根据想看人数排序
+     * @param num
+     * @return
+     */
+    List<Movie> selectMovieOrderByLikeNum(int num);
+
+    /**
+     * 展示指定数目未上映电影
+     * @param num
+     * @return
+     */
+    List<Movie> selectAllOutMovie(@Param("num")int num, @Param("time")Timestamp time);
 
     /**
      * 展示所有电影(不包括已经下架的)

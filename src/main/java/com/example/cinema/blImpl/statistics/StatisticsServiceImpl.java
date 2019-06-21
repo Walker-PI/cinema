@@ -43,7 +43,7 @@ public class StatisticsServiceImpl implements StatisticsService {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             requireDate = simpleDateFormat.parse(simpleDateFormat.format(requireDate));
 
-            Date nextDate = getNumDayAfterDate(requireDate, 1);
+            Date nextDate = getNumDayAfterDate(requireDate, 10);
             return ResponseVO.buildSuccess(movieScheduleTimeList2MovieScheduleTimeVOList(statisticsMapper.selectMovieScheduleTimes(requireDate, nextDate)));
 
         }catch (Exception e){
@@ -67,7 +67,7 @@ public class StatisticsServiceImpl implements StatisticsService {
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date today = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
-            Date startDate = getNumDayAfterDate(today, -6);
+            Date startDate = getNumDayAfterDate(today, -2);
             List<AudiencePriceVO> audiencePriceVOList = new ArrayList<>();
             for(int i = 0; i < 7; i++){
                 AudiencePriceVO audiencePriceVO = new AudiencePriceVO();
@@ -98,7 +98,7 @@ public class StatisticsServiceImpl implements StatisticsService {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             requireDate = simpleDateFormat.parse(simpleDateFormat.format(requireDate));
 
-            Date nextDate = getNumDayAfterDate(requireDate, 1);
+            Date nextDate = getNumDayAfterDate(requireDate, 7);
 
             List<PlacingRateVO> moviePlacingRateList = new ArrayList<>();
 
@@ -137,9 +137,10 @@ public class StatisticsServiceImpl implements StatisticsService {
         try{
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date today = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
-            Date startDate = getNumDayAfterDate(today, -days+1);
-            Date endDate = getNumDayAfterDate(today, 1);
-            return ResponseVO.buildSuccess(numMovieTotalBoxOfficeList2numMovieTotalBoxOfficeList(statisticsMapper.selectMovieTotalBoxOfficeBetweenStartDateAndEndDate(startDate,endDate), movieNum));
+            Date startDate = getNumDayAfterDate(today, -days/2);
+            Date endDate = getNumDayAfterDate(today, days - days/2);
+            List<MovieTotalBoxOffice> movieTotalBoxOffices = statisticsMapper.selectMovieTotalBoxOfficeBetweenStartDateAndEndDate(startDate,endDate);
+            return ResponseVO.buildSuccess(numMovieTotalBoxOfficeList2numMovieTotalBoxOfficeList(movieTotalBoxOffices,movieNum));
         }catch (Exception e){
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
@@ -183,7 +184,7 @@ public class StatisticsServiceImpl implements StatisticsService {
     private List<MovieTotalBoxOfficeVO> numMovieTotalBoxOfficeList2numMovieTotalBoxOfficeList(List<MovieTotalBoxOffice> movieTotalBoxOfficeList, int movieNum){
         List<MovieTotalBoxOfficeVO> numMovieTotalBoxOfficeVOList = new ArrayList<>();
         for(MovieTotalBoxOffice movieTotalBoxOffice : movieTotalBoxOfficeList){
-            if(movieTotalBoxOffice.getBoxOffice() == null)movieTotalBoxOffice.setBoxOffice(0);
+            if(movieTotalBoxOffice.getBoxOffice() == null)movieTotalBoxOffice.setBoxOffice(0.0);
             numMovieTotalBoxOfficeVOList.add(new MovieTotalBoxOfficeVO(movieTotalBoxOffice));
             movieNum --;
             if(movieNum == 0)break;

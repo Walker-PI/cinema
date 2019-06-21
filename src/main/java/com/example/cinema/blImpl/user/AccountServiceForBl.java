@@ -1,9 +1,11 @@
 package com.example.cinema.blImpl.user;
 
-import com.example.cinema.vo.ResponseVO;
-import org.springframework.stereotype.Service;
+import com.example.cinema.vo.VIPUserVO;
 
+import java.util.List;
 
 public interface AccountServiceForBl {
-    public boolean isExist(int userId);
+    boolean isExist(int userId);
+
+    List<VIPUserVO> getVIPUserListBySpendAmount(double amount);
 }

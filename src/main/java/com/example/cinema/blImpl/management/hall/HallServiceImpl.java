@@ -1,7 +1,6 @@
 package com.example.cinema.blImpl.management.hall;
 
 import com.example.cinema.bl.management.HallService;
-import com.example.cinema.blImpl.management.schedule.ScheduleServiceForBl;
 import com.example.cinema.data.management.HallMapper;
 import com.example.cinema.po.Hall;
 import com.example.cinema.po.ScheduleItem;
@@ -23,7 +22,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
     @Autowired
     private HallMapper hallMapper;
     @Autowired
-    private ScheduleServiceForBl scheduleService;
+    private ScheduleServiceForHallBl scheduleService;
 
     @Override
     public ResponseVO searchAllHall() {
@@ -35,7 +34,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
         }
     }
 
-    //TODO:根据ID查找影厅
+    //根据ID查找影厅
     @Override
     public ResponseVO searchHall(int id){
         try {
@@ -47,7 +46,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
         }
     }
 
-    //TODO:添加影厅信息
+    //添加影厅信息
     @Override
     public ResponseVO addHall(HallFormVO hallFormVO){
         try {
@@ -65,7 +64,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
         }
     }
 
-    //TODO:删除一个影厅信息
+    //删除一个影厅信息
     @Override
     public ResponseVO deleteHall(int id){
         try {
@@ -84,7 +83,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
         }
     }
 
-    //TODO:修改ID对应的影厅信息
+    //修改ID对应的影厅信息
     @Override
     public ResponseVO changeHallInfo(int id,HallFormVO hallFormVO){
         try {
@@ -102,6 +101,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
             hallMapper.updateHall(id,name,column,row);
             return ResponseVO.buildSuccess();
         }catch (Exception e){
+            e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
     }

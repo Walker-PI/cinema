@@ -47,13 +47,13 @@ function login(){
             if (res.success) {
                 sessionStorage.setItem('username', formData.username);
                 sessionStorage.setItem('id', res.content.id);
-                if (formData.username == "root") {
+
+                if (res.content.userType == 2) {
+                    sessionStorage.setItem('role', 'user');
+                    window.location.href = "/user/home";
+                } else {
                     sessionStorage.setItem('role', 'admin');
                     window.location.href = "/admin/movie/manage"
-                } else {
-                    sessionStorage.setItem('role', 'user');
-
-                    window.location.href = "/user/home";
                 }
             } else {
                 alert(res.message);

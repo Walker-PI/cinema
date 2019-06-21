@@ -12,13 +12,14 @@ import javax.servlet.http.HttpSession;
  * @date 2019/3/23
  */
 public class SessionInterceptor extends HandlerInterceptorAdapter {
-//    @Override
-//    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler) throws Exception{
-//        HttpSession session=httpServletRequest.getSession();
-//        if(null!=session && null!=session.getAttribute(InterceptorConfiguration.SESSION_KEY)){
-//            return true;
-//        }
-//        httpServletResponse.sendRedirect("/index");
+    @Override
+    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler) throws Exception{
+        HttpSession session=httpServletRequest.getSession();
+        if(null!=session && null!=session.getAttribute(InterceptorConfiguration.SESSION_KEY)){
+            return true;
+        }
+//        httpServletResponse.sendRedirect("/index");//支付宝
 //        return false;
-//    }
+        return true;
+    }
 }

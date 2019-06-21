@@ -16,44 +16,48 @@ public class VIPCardController {
     VIPService vipService;
 
     @PostMapping("/add")
-    public ResponseVO addVIP(@RequestParam int userId){
-        return vipService.addVIPCard(userId);
+    public ResponseVO addVIP(@RequestParam int userId, @RequestParam double fare) {
+        return vipService.makeBuyCardRequest(userId, fare);
+    }
+
+    @PostMapping("/add/directly")
+    public ResponseVO addVIPDirectly(@RequestParam int userId, @RequestParam double fare) {
+        return vipService.addVIPCard(userId, fare);
     }
 
     @GetMapping("{userId}/get")
-    public ResponseVO getVIP(@PathVariable int userId){
+    public ResponseVO getVIP(@PathVariable int userId) {
         return vipService.getCardByUserId(userId);
     }
 
     @GetMapping("/getVIPInfo")
-    public ResponseVO getVIPInfo(){
+    public ResponseVO getVIPInfo() {
         return vipService.getVIPInfo();
     }
 
-    /**
-     * 获取VIP卡充值记录
-     * @param userId
-     * @return
-     */
-    @GetMapping("/{userId}/getChargeHistory")
-    public ResponseVO getChargeHistory(@PathVariable int userId){
-        return vipService.getChargeHistory(userId);
+    @PostMapping("/charge")
+    public ResponseVO charge(@RequestBody VIPCardForm vipCardForm) {
+        return vipService.makeChargeRequest(vipCardForm);
     }
 
-    @PostMapping("/charge")
-    public ResponseVO charge(@RequestBody VIPCardForm vipCardForm){
+    @PostMapping("/charge/directly")
+    public ResponseVO chargeDirectly(@RequestBody VIPCardForm vipCardForm) {
         return vipService.charge(vipCardForm);
     }
 
-
     /**
      * 普通卡升级
+     *
      * @param userId
      * @return
      */
     @PostMapping("/upgrade")
-    public ResponseVO upgradeCard(@RequestParam int userId){
-        return vipService.upgradeCard(userId);
+    public ResponseVO upgradeCard(@RequestParam int userId, @RequestParam double fare) {
+        return vipService.makeUpgradeCardRequest(userId, fare);
     }
 
+    @PostMapping("/upgrade/directly")
+    public ResponseVO upgreadeCardDirectly(@RequestParam int userId,@RequestParam double fare){
+        return vipService.upgradeCard(userId,fare);
+    }
 }
